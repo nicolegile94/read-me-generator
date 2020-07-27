@@ -1,7 +1,17 @@
-const fs = require('fs');
-const generateMarkdown = require('./Develop/utils/generateMarkdown.js');
-
+//const fs = require('fs');
+//const generateMarkdown = require('./Develop/utils/generateMarkdown.js');
+const inquirer = require('inquirer');
+console.log(inquirer);
 // array of questions for user
+inquirer
+    .prompt([
+        {
+            type: 'input',
+            name: 'File Name',
+            message: "What is the name of your file?"
+        }
+    ])
+    .then(answers => console.log(answers));
 const questions = [
 
     //installation (Required)
@@ -33,11 +43,12 @@ const questions = [
 ];
 
 // function to write README file
-fs.generateMarkdown('README.md', writeToFile(fileName, data), err => {
-    if (err) throw err;
+// const pageMD = generateMarkdown(readmeData);
+//fs.generateMarkdown('README.md', writeToFile(fileName, data), err => {
+   // if (err) throw err;
 
-    console.log('README complete! Check out README.md to see the output.');
-});
+    //console.log('README complete! Check out README.md to see the output.');
+//});
 
 
 // function to initialize program
