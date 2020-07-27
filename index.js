@@ -1,4 +1,5 @@
 const fs = require('fs');
+const generateMarkdown = require('./Develop/utils/generateMarkdown.js');
 
 // array of questions for user
 const questions = [
@@ -32,29 +33,7 @@ const questions = [
 ];
 
 // function to write README file
-profileDataArgs = process.argv.slice(2, process.argv.length);
-const [fileName, data] = profileDataArgs;
-
-const writeToFile = (fileName, data) => {
-    return `
-    # ${fileName}
-    ## The Instillation
-    ${data}
-    ## Usage
-
-    ##Credits
-
-    ##Licensing
-
-    ##Badges
-
-    ## Contributing
-
-    ##Tests
-    `;
-};
-
-fs.writeFile('README.md', writeToFile(fileName, data), err => {
+fs.generateMarkdown('README.md', writeToFile(fileName, data), err => {
     if (err) throw err;
 
     console.log('README complete! Check out README.md to see the output.');
