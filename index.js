@@ -1,7 +1,8 @@
-//const fs = require('fs');
-//const generateMarkdown = require('./Develop/utils/generateMarkdown.js');
+const fs = require('fs');
+const generateMarkdown = require('./Develop/utils/generateMarkdown.js');
 const inquirer = require('inquirer');
 const { flatMap } = require('lodash');
+const { fstat } = require('fs');
 
 
 // array of questions for user
@@ -65,38 +66,48 @@ const promptUser = () => {
             }
         },
         {
-            type: 'input',
+            type: 'checkbox',
             name: 'license',
-            message: 'This lets other developers know what they can and cannot do with your project. If you need help choosing a license, use [https://choosealicense.com/](https://choosealicense.com/). (Required)',
-            validate: licenseInput => {
-                if (licenseInput) {
-                    return true;
-                } else {
-                    console.log('Please enter license information!');
-                    return false;
-                }
-            }
+            message: 'This lets other developers know what they can and cannot do with your project. If you need help choosing a license, use [https://choosealicense.com/](https://choosealicense.com/).',
+            choices: ['GNU GLP', 'Apache', 'Ms-PL', 'BSD', 'CDDL', 'EPL', 'MIT']
         },
         {
             type: 'input',
             name: 'contributing',
             message: 'Add guidelines for how you would like other developers to contribute to this project'
+        },
+        {
+            type: 'input',
+            name: 'test',
+            message: 'Add testing instructions.'
+        },
+        {
+            type: 'input',
+            name: 'github',
+            message: 'Add your GitHub username'
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'Please enter your email address'
         }
     ]); 
 };
-promptUser().then(answers => console.log(answers));
 const questions = [
 
 ];
 
 // function to write README file
-// const pageMD = generateMarkdown(readmeData);
-//fs.generateMarkdown('README.md', writeToFile(fileName, data), err => {
-   // if (err) throw err;
 
-    //console.log('README complete! Check out README.md to see the output.');
-//});
+promptUser().then(templateData => {
+    const pageMD = generateMarkdown(templateData);
+    
+    fs.writeFile('./README.md', pageMD, err => {
+        if (err) throw new Error(err);
 
+        console.log('Page created! Check out README.md in this directory to see it!');
+    });
+});
 
 // function to initialize program
 //function init() {
