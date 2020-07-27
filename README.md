@@ -1,5 +1,5 @@
 
-    # Test File
+    # Test Project Name
 
     Table of contents
 =================
@@ -16,17 +16,17 @@
 <!--te-->
 
     ##Licensing
-    GNU GLP,Apache,Ms-PL,BSD,CDDL,EPL,MIT
+    GNU GLP,BSD,EPL
     ## Instillation
-    1) Run Test app
+    1) Go to Github 2) Clone code 3) Run code
     ## Usage
-    Enter your project information and then see stuff work
+    1) Enter data 2) answer questions 3) see results
     ##Credits
-    No other contributors
+    No collaborators, solo project
     ## Contributing
-    Please send bug requests to my email (see below)
+    Please send bug reports to email provided below
     ##Tests
-    1) Run test data
+    1) Run test data 2) See if project works
     ##Questions
     ##GitHub Username
     [GitHub](http://github.com/nicolegile94)
